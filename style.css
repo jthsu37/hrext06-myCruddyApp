@@ -1,0 +1,12 @@
+.input-one, .input-two, .input-thr, .input-fou, .input-fiv, .input-pwb {
+  text-align: center;
+  width: 15px;
+}
+
+.list-display-field {
+  display: flex;
+}
+
+.value {
+  padding-left: 4px;
+}

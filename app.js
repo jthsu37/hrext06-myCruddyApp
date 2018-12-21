@@ -3,12 +3,13 @@ $(document).ready(function(){
    $('.btn-submit').on('click', function(){
     let key;
     let value;
-    if ($('.input-key').val() && $('.input-value').val()) {
+    var $powerballNumbers = JSON.stringify([$('.input-one').val() + ', ' + $('.input-two').val() + ', ' + $('.input-thr').val() + ', ' + $('.input-fou').val() + ', ' + $('.input-fiv').val() + ', PB: ' + $('.input-pwb').val()])
+    if ($('.input-key').val() && $('.input-one').val() && $('.input-two').val() && $('.input-thr').val() && $('.input-fou').val() && $('.input-fiv').val()) {
       var arr = [];
       if (!localStorage.hasOwnProperty($('.input-key').val())) {
-        localStorage.setItem($('.input-key').val(), $('.input-value').val())
+        localStorage.setItem($('.input-key').val(), $powerballNumbers)
         key = $('.input-key').val()
-        value = $('.input-value').val()
+        value = $powerballNumbers
       } else if (localStorage.getItem($('.input-key').val()).includes($('.input-value').val())) {
         key = $('.input-key').val()
         value = localStorage.getItem($('.input-key').val())
@@ -23,7 +24,7 @@ $(document).ready(function(){
     }
 
     // display the value here
-      let $keyValue = $('<div class="keys">' + key + ': ' + '</div><div class="value">' + value + '</div>')
+      let $keyValue = $('<div class="keys">' + key + ':</div><div class="value">' + value + '</div>')
       $('.list-display-field').html(' ')
       $('.list-display-field').append($keyValue)
   });
@@ -31,7 +32,7 @@ $(document).ready(function(){
   // delete from local storage when delete button clicked
   $('.btn-delete').on('click', function(){
     localStorage.removeItem($('.input-key').val());
-    $('.list-display-field').text('nothing to display yet');
+    $('.list-display-field').text($('.input-key').val() + ' key deleted');
   });
   $('.btn-delete-all').on('click', function(){
     localStorage.clear()
