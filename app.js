@@ -43,7 +43,7 @@ $(document).ready(function(){
       firstInput = [$('.input-one').val()]
       firstInputObj = obj[firstInput] = {}
       firstCount = firstInputObj['count'] = 1
-      firstPercent = firstInputObj['percent'] = (firstCount / globalCount) * 100
+      firstPercent = firstInputObj['percent'] = Number((firstCount / globalCount) * 100).toFixed(2)
       localStorage.setItem($('.input-key').val(), JSON.stringify(obj))
       key = 'Number ' + $('.input-one').val()
       value = 'Count: ' + firstInputObj['count'] + ' Percent: ' + firstInputObj['percent']
@@ -52,10 +52,10 @@ $(document).ready(function(){
       // console.log(JSON.parse(oldValue))
       obj[$('.input-one').val()]['count']++
       globalCount++
-      obj[$('.input-one').val()]['percent'] = obj[$('.input-one').val()]['count'] / globalCount * 100
+      obj[$('.input-one').val()]['percent'] = Number(obj[$('.input-one').val()]['count'] / globalCount * 100).toFixed(2)
       localStorage.setItem($('.input-key').val(), JSON.stringify(obj))
       key = 'Number ' + $('.input-one').val()
-      value = 'Count: ' + obj[$('.input-one').val()]['count'] + ' Percent: ' + obj[$('.input-one').val()]['percent']
+      value = 'Count: ' + obj[$('.input-one').val()]['count'] + ' Percent: ' + Number(obj[$('.input-one').val()]['percent']).toFixed(2)
     }
     let $keyValue = $('<div class="keys">' + key + ':</div><div class="value">' + value + '</div>')
     $('.list-display-field').html(' ')
